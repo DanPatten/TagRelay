@@ -1,0 +1,28 @@
+{
+  "name": "mcp-server-tagrelay",
+  "version": "1.0.0",
+  "description": "MCP server for TagRelay — bridges Chrome extension element tagging with AI assistants",
+  "main": "dist/index.js",
+  "bin": {
+    "mcp-server-tagrelay": "dist/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "express": "^4.21.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/cors": "^2.8.17",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}

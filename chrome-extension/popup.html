@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>TagRelay</h1>
+  <div class="field">
+    <label for="port">MCP Server Port</label>
+    <input type="number" id="port" min="1024" max="65535" value="7890">
+  </div>
+  <div class="field">
+    <label for="screenshot">
+      <input type="checkbox" id="screenshot">
+      Capture element screenshots
+    </label>
+  </div>
+  <div id="status"></div>
+  <script src="popup.js"></script>
+</body>
+</html>

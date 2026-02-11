@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "tagrelay": {
+      "command": "node",
+      "args": ["./mcp-server/dist/index.js"],
+      "env": { "TAGRELAY_PORT": "7890" }
+    }
+  }
+}
