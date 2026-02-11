@@ -70,10 +70,6 @@ For tools that require manual config, add this block:
 
 > Replace `<full-path-to-repo>` with the actual absolute path to this repo on your machine.
 
-### Step 2.5 &mdash; (Optional) Add the workflow prompt
-
-Claude Code users get this automatically via the bundled `/tagrelay` skill. For other tools, copy the prompt from [`tagrelay-prompt.md`](tagrelay-prompt.md) into your tool's custom instructions or system prompt so it knows how to use the MCP tools.
-
 ### Step 3 &mdash; Load the Chrome Extension
 
 1. Go to `chrome://extensions`
@@ -101,6 +97,8 @@ Once you've tagged what you need, your AI assistant can pick them up using these
 | `tagrelay_get_status` | Returns how many elements are tagged and on which pages |
 | `tagrelay_get_tagged_elements` | Returns full data for each tag &mdash; CSS selector, text, HTML snippet, bounding box, page URL |
 | `tagrelay_clear_tags` | Clears everything and removes badges from the browser |
+
+The server also exposes a `tagrelay` **MCP prompt** with the full workflow instructions. MCP-compatible clients discover it automatically via `prompts/list` — no manual prompt setup needed.
 
 ---
 
@@ -132,4 +130,5 @@ TagRelay/
       store.ts            In-memory tag storage
       http-server.ts      REST + SSE endpoints for Chrome extension
       tools.ts            MCP tool definitions
+      prompts.ts          MCP prompt definitions
 ```

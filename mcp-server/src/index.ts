@@ -1,6 +1,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { createHttpServer } from "./http-server.js";
+import { registerPrompts } from "./prompts.js";
 import { registerTools } from "./tools.js";
 
 const PORT = parseInt(process.env.TAGRELAY_PORT ?? "7890", 10);
@@ -12,6 +13,7 @@ async function main() {
   });
 
   registerTools(server);
+  registerPrompts(server);
 
   // Start HTTP server for Chrome extension communication
   createHttpServer(PORT);
