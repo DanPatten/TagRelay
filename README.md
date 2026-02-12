@@ -96,9 +96,16 @@ For continuous monitoring, use endless polling mode — Claude watches for new t
 /gr endless
 ```
 
-To set up the `/gr` command, ask Claude Code:
+To set up the `/gr` command, copy the skill directory into your Claude Code skills folder:
 
-> Install the `/gr` skill from the GhostRelay repo
+```bash
+mkdir -p ~/.claude/skills/gr
+cp skills/gr/SKILL.md ~/.claude/skills/gr/SKILL.md
+```
+
+Or ask Claude Code:
+
+> Install the `/gr` skill from the GhostRelay repo — copy `skills/gr/SKILL.md` to `~/.claude/skills/gr/SKILL.md`
 
 ### Other AI Tools
 
