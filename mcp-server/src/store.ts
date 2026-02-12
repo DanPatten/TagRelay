@@ -1,8 +1,9 @@
 export interface TaggedElement {
   index: number;
-  selector: string;
-  innerText: string;
-  outerHTML: string;
+  type?: "tag" | "snip";
+  selector?: string;
+  innerText?: string;
+  outerHTML?: string;
   boundingBox: {
     x: number;
     y: number;
@@ -17,6 +18,7 @@ export interface TaggedElement {
   attributes?: Record<string, string>;
   parentContext?: string[];
   pageTitle?: string;
+  scrollPosition?: { x: number; y: number };
 }
 
 type ClearListener = () => void;

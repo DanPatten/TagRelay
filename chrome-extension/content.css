@@ -70,27 +70,37 @@
 #ghostrelay-btn-clear {
   position: fixed;
   bottom: 24px;
-  right: 68px;
-  width: 36px;
-  height: 36px;
+  right: 76px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: #888;
+  background: rgba(15, 15, 25, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #fff;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   cursor: pointer;
   z-index: 2147483647;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  transition: all 0.2s ease;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 1px 0 rgba(255, 255, 255, 0.08) inset;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0;
 }
 
 #ghostrelay-btn-clear:hover {
-  background: #E8543E;
-  transform: scale(1.1);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  background: rgba(220, 38, 38, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform: scale(1.08);
+  border-color: rgba(255, 100, 100, 0.3);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    0 0 16px rgba(220, 38, 38, 0.2);
 }
 
 /* Hover highlight */
@@ -169,7 +179,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 12px 8px 0;
+  padding: 8px 12px;
   background: linear-gradient(135deg, #4A90D9 0%, #5A6ACF 100%);
   color: #fff;
   font-size: 11px;
@@ -276,4 +286,290 @@
 .ghostrelay-tagged {
   outline: 2px solid #E8543E !important;
   outline-offset: 1px !important;
+}
+
+/* --- FAB Snip mode active state (purple) --- */
+#ghostrelay-fab.active-snip {
+  background: rgba(15, 15, 25, 0.9);
+  color: #c084fc;
+  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    0 0 16px rgba(124, 58, 237, 0.2);
+  animation: ghostrelay-pulse-snip 1.5s ease-in-out infinite;
+}
+
+@keyframes ghostrelay-pulse-snip {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(124, 58, 237, 0);
+  }
+}
+
+/* --- Radial Menu --- */
+.ghostrelay-radial-menu {
+  position: fixed;
+  bottom: 76px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  z-index: 2147483647;
+}
+
+.ghostrelay-radial-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(15, 15, 25, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.ghostrelay-radial-btn.active-tag {
+  background: rgba(74, 144, 217, 0.3);
+  color: #7eb8ff;
+  border-color: rgba(100, 160, 255, 0.5);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    0 0 12px rgba(100, 140, 255, 0.25);
+}
+
+.ghostrelay-radial-btn.active-snip {
+  background: rgba(124, 58, 237, 0.3);
+  color: #c084fc;
+  border-color: rgba(124, 58, 237, 0.5);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    0 0 12px rgba(124, 58, 237, 0.25);
+}
+
+.ghostrelay-radial-btn:hover {
+  transform: scale(1.1);
+  background: rgba(20, 20, 35, 0.92);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    0 0 12px rgba(100, 140, 255, 0.15);
+}
+
+/* --- Snip Overlay --- */
+#ghostrelay-snip-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: crosshair;
+  z-index: 2147483646;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ghostrelay-snip-instruction {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  user-select: none;
+}
+
+.ghostrelay-selection-rect {
+  position: fixed;
+  border: 2px dashed #7C3AED;
+  background: rgba(124, 58, 237, 0.1);
+  pointer-events: none;
+  z-index: 2147483647;
+}
+
+/* --- Snip Badge (purple) --- */
+.ghostrelay-badge-snip {
+  position: fixed;
+  background: #7C3AED;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 10px;
+  padding: 0 5px;
+  z-index: 2147483646;
+  pointer-events: auto;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  user-select: none;
+  cursor: pointer;
+}
+
+.ghostrelay-badge-snip.has-annotation::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 8px;
+  height: 8px;
+  background: #7C3AED;
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
+
+/* Snip popover header variant */
+.ghostrelay-popover-header-snip {
+  background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+}
+
+/* Snip popover screenshot preview */
+.ghostrelay-popover-screenshot {
+  max-width: 280px;
+  max-height: 200px;
+  object-fit: contain;
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* --- Inline Snip Region --- */
+.ghostrelay-snip-region {
+  position: absolute;
+  border: 2px solid #7C3AED;
+  border-radius: 3px;
+  pointer-events: none;
+  z-index: 2147483644;
+}
+
+.ghostrelay-inline-toolbar {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: rgba(15, 15, 25, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  z-index: 2147483647;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.ghostrelay-inline-canvas {
+  position: absolute;
+  cursor: crosshair;
+  z-index: 2147483645;
+}
+
+.ghostrelay-tool-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.ghostrelay-tool-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.ghostrelay-tool-btn.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.ghostrelay-tool-save {
+  color: rgba(34, 197, 94, 0.8);
+}
+
+.ghostrelay-tool-save:hover {
+  color: #22C55E;
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.ghostrelay-toolbar-sep {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 0 4px;
+}
+
+.ghostrelay-color-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ghostrelay-color-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.ghostrelay-color-btn:hover {
+  transform: scale(1.15);
+}
+
+.ghostrelay-color-btn.active {
+  border-color: #fff;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+
+.ghostrelay-tool-remove {
+  color: rgba(239, 68, 68, 0.7);
+}
+
+.ghostrelay-tool-remove:hover {
+  color: #EF4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.ghostrelay-inline-canvas-saved {
+  pointer-events: none;
+  cursor: default;
+}
+
+.ghostrelay-text-input {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  outline: none;
+  z-index: 2147483647;
+  min-width: 100px;
 }
