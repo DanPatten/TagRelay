@@ -271,6 +271,8 @@
     textarea.addEventListener("blur", () => {
       // Delay to check if focus moved to Remove button (which fires mousedown first)
       setTimeout(() => {
+        // If the popover was just closed by mousedown, don't double-close
+        if (Date.now() - popoverClosedAt < 200) return;
         // If entry was already removed or popover closed, bail
         if (!entry.popover || entry.popoverMode !== "edit") return;
         // If focus moved to another element inside the popover, don't close
@@ -416,7 +418,7 @@
     // Hover: show preview (annotation text only)
     badge.addEventListener("mouseenter", () => {
       clearTimeout(popoverHideTimeout);
-      if (entry.popoverMode !== "edit") {
+      if (entry.popoverMode !== "edit" && Date.now() - popoverClosedAt > 200) {
         showPopover(entry, "preview");
       }
     });
@@ -557,6 +559,9 @@
       e.preventDefault();
       e.stopPropagation();
 
+      // If a popover was just closed by mousedown, don't select the element
+      if (Date.now() - popoverClosedAt < 200) return;
+
       const idx = findTagged(e.target);
       if (idx !== -1) {
         showPopover(taggedElements[idx], "edit");
@@ -567,6 +572,16 @@
     },
     true
   );
+
+  // Close edit popover when clicking anywhere outside it
+  let popoverClosedAt = 0;
+  document.addEventListener("mousedown", (e) => {
+    const openEdit = taggedElements.find((t) => t.popoverMode === "edit");
+    if (!openEdit) return;
+    if (isGhostRelayUI(e.target)) return;
+    saveAndClose(openEdit);
+    popoverClosedAt = Date.now();
+  }, true);
 
   // Reposition badges and popovers on scroll/resize
   function repositionBadges() {

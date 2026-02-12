@@ -5,7 +5,7 @@
 <h1 align="center">GhostRelay</h1>
 
 <p align="center">
-  <strong>Tag elements in your browser. Pull them into your AI assistant. That's it.</strong>
+  <strong>Point at what needs fixing. Tell your AI what to change. That's it.</strong>
 </p>
 
 <p align="center">
@@ -24,7 +24,7 @@ Ask your AI assistant:
 
 > **Install the MCP server at https://github.com/DanPatten/GhostRelay**
 
-Most MCP-compatible tools (Claude Code, Claude Desktop, Cursor, etc.) will handle cloning, building, and registering the server automatically.
+Most MCP-compatible tools (Claude Code, Cursor, Antigravity, OpenCode, etc.) will handle cloning, building, and registering the server automatically.
 
 ### 2. Install the Chrome Extension
 
@@ -66,10 +66,11 @@ Then add this to your tool's MCP config:
 | Tool | Config location |
 |------|----------------|
 | **Claude Code** | Auto-detected from `.mcp.json` in this repo |
-| **Claude Desktop** | `claude_desktop_config.json` |
 | **Cursor** | `.cursor/mcp.json` in your project or global settings |
 | **Windsurf** | `~/.codeium/windsurf/mcp_config.json` |
 | **Cline** | `cline_mcp_settings.json` (VS Code settings) |
+| **Antigravity** | `~/.gemini/antigravity/mcp_config.json` |
+| **OpenCode** | `opencode.json` in project root or `~/.config/opencode/opencode.json` |
 
 ---
 

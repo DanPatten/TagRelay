@@ -169,7 +169,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 12px;
+  padding: 8px 12px 8px 0;
   background: linear-gradient(135deg, #4A90D9 0%, #5A6ACF 100%);
   color: #fff;
   font-size: 11px;
