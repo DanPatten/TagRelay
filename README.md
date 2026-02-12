@@ -77,7 +77,8 @@ Then add this to your tool's MCP config:
 ## Features
 
 - **Point-and-click tagging** — hover to highlight, click to tag any element on any webpage
+- **Screen snipping** — drag to select any region of the page, draw or add text annotations, and send the screenshot to your AI assistant
 - **Inline annotations** — describe what should change right from the browser
-- **MCP integration** — your AI assistant picks up tags, selectors, HTML, and context automatically
-- **Multi-page support** — tag across different pages, everything stays in sync
+- **MCP integration** — your AI assistant picks up tags, snips, selectors, HTML, and context automatically
+- **Multi-page support** — tag and snip across different pages, everything stays in sync
 - **Zero config** — enable per-site from the extension popup, no API keys needed
