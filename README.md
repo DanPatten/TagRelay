@@ -22,7 +22,7 @@
 
 Ask your AI assistant:
 
-> **Install the MCP server at https://github.com/DanPatten/GhostRelay**
+> **Install the MCP server at https://github.com/DanPatten/GhostRelay — after installing, also copy the `.claude/skills/` folder from the cloned repo into my project so I get the `/gr` shortcut command.**
 
 ### 2. Install the Chrome Extension
 
@@ -89,6 +89,8 @@ Use the `/gr` shortcut command (or `/ghostrelay`):
 ```
 
 When called without instructions, GhostRelay infers intent from the tagged elements and any annotations you added in the browser.
+
+> **Note:** The `/gr` command requires the skill files in your project's `.claude/skills/` folder. If you used the Quick Start install prompt above, these are copied automatically. To add them manually, copy `gr.md` and `ghostrelay.md` from the cloned GhostRelay repo's `.claude/skills/` directory into your project's `.claude/skills/` folder.
 
 ### Other AI Tools
 
