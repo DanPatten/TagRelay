@@ -30,6 +30,13 @@ Ask your AI assistant:
 2. Toggle on **Developer mode** (top right)
 3. Click **Load unpacked** and select the `chrome-extension/` folder from this repo
 
+### 3. Start Tagging
+
+1. Click the GhostRelay extension icon in Chrome and toggle the current site **on**
+2. Look for the floating GhostRelay button in the bottom-right corner of the page
+3. Click it to open the radial menu — choose **Tag** to click-select elements or **Snip** to capture a screen region
+4. Add annotations describing what you want changed, then tell your AI assistant to apply the updates
+
 ---
 
 ## Manual Setup
