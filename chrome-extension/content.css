@@ -312,7 +312,7 @@
 .ghostrelay-radial-menu {
   position: fixed;
   bottom: 76px;
-  right: 24px;
+  right: 28px;
   display: flex;
   flex-direction: column;
   gap: 8px;

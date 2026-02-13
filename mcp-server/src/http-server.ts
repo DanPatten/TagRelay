@@ -32,7 +32,7 @@ function saveScreenshot(element: TaggedElement, index: number): void {
   const filepath = path.join(screenshotsDir, filename);
 
   fs.writeFileSync(filepath, Buffer.from(base64Data, "base64"));
-  element.screenshot = filepath;
+  element.screenshot = path.resolve(filepath);
 }
 
 export function createHttpServer(port: number) {

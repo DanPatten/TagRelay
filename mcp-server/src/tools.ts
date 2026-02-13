@@ -8,7 +8,25 @@ export function registerTools(server: McpServer) {
     {},
     async () => {
       const tags = store.getAllTags();
-      const hasScreenshots = tags.some((t) => t.screenshot);
+      const compact = tags.map((t) => {
+        const screenshot =
+          t.screenshot && !t.screenshot.startsWith("data:")
+            ? t.screenshot
+            : undefined;
+        return {
+          index: t.index,
+          type: t.type ?? "tag",
+          tagName: t.tagName,
+          selector: t.selector,
+          text: (t.innerText || "").slice(0, 200),
+          annotation: t.annotation,
+          screenshot,
+          pageURL: t.pageURL,
+          pageTitle: t.pageTitle,
+          boundingBox: t.boundingBox,
+        };
+      });
+      const hasScreenshots = compact.some((t) => t.screenshot);
       const hint = hasScreenshots
         ? "View screenshots using the Read tool with the file paths in the screenshot fields below.\n\n"
         : "";
@@ -16,7 +34,7 @@ export function registerTools(server: McpServer) {
         content: [
           {
             type: "text" as const,
-            text: hint + JSON.stringify({ tags }, null, 2),
+            text: hint + JSON.stringify(compact),
           },
         ],
       };

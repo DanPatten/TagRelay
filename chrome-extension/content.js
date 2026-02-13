@@ -143,6 +143,7 @@
   function enterMode(mode) {
     currentMode = mode;
     lastMode = mode;
+    suppressNextClick = false;
     if (mode === "tag") {
       selectionMode = true;
       fab.classList.add("active");
@@ -515,8 +516,8 @@
       index,
       type: "tag",
       selector: getSelector(el),
-      innerText: (el.innerText || "").trim().slice(0, 500),
-      outerHTML: el.outerHTML.slice(0, 2000),
+      innerText: (el.innerText || "").trim().slice(0, 200),
+      outerHTML: el.outerHTML.slice(0, 500),
       boundingBox: {
         x: rect.x,
         y: rect.y,
